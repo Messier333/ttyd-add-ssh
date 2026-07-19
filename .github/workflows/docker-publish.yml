@@ -2,7 +2,10 @@ name: Build and Publish GHCR
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  schedule:
+    - cron: "0 18 * * 6"
   workflow_dispatch:
 
 jobs:
@@ -27,4 +30,5 @@ jobs:
           context: .
           push: true
           pull: true
+          no-cache: true
           tags: ghcr.io/messier333/ttyd-add-ssh:latest
